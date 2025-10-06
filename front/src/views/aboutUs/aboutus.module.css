@@ -1,21 +1,431 @@
- .container {
-    padding-top: 30px;
-    color: #fff;
-    width: 60vw;
+/* Wrapper principal */
+.aboutWrapper {
+    min-height: 100vh;
+    background: #0a0a0a;
+    position: relative;
+    overflow-x: hidden;
+    padding: 100px 20px 60px;
+}
+
+/* Efectos de fondo */
+.aboutWrapper::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 20%, rgba(220, 38, 38, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(37, 99, 235, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Grid sutil de fondo */
+.aboutWrapper::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Container principal */
+.aboutContainer {
+    position: relative;
+    z-index: 1;
+    max-width: 1000px;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
-    margin: auto;
+    gap: 60px;
 }
 
-.container h1 {
+/* Hero Section */
+.heroSection {
     text-align: center;
-    font-size: 45px;
 }
 
-.container h2 {
-    font-size: 22px;
-    font-weight: 400;
+.mainTitle {
+    font-size: 64px;
+    font-weight: 800;
+    letter-spacing: 4px;
+    margin: 0 0 20px 0;
+    background: linear-gradient(135deg, #dc2626, #2563eb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.divider {
+    width: 120px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #dc2626, #2563eb, transparent);
+    margin: 0 auto 24px;
+    border-radius: 2px;
+}
+
+.tagline {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 20px;
     font-style: italic;
+    font-weight: 300;
+    letter-spacing: 1px;
     margin: 0;
-    line-height: 35px;
+}
+
+/* Mission Section */
+.missionSection {
+    display: flex;
+    justify-content: center;
+}
+
+.missionCard {
+    background: rgba(15, 15, 15, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 800px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.sectionTitle {
+    font-size: 32px;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 20px 0;
+    letter-spacing: -0.5px;
+}
+
+.missionText {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 18px;
+    line-height: 1.8;
+    margin: 0;
+}
+
+.brand {
+    background: linear-gradient(135deg, #dc2626, #2563eb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* Trainer Section */
+.trainerSection {
+    display: flex;
+    justify-content: center;
+}
+
+.trainerCard {
+    background: rgba(15, 15, 15, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 800px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.trainerHeader {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 24px;
+}
+
+.trainerIcon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, rgba(220, 38, 38, 0.2), rgba(37, 99, 235, 0.2));
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    flex-shrink: 0;
+}
+
+.trainerInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.trainerName {
+    font-size: 28px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #dc2626, #2563eb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0;
+}
+
+.trainerRole {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.trainerDescription {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 16px;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* Values Section */
+.valuesSection {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.valuesSection .sectionTitle {
+    text-align: center;
+}
+
+.valuesGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.valueCard {
+    background: rgba(15, 15, 15, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 32px 24px;
+    text-align: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.valueCard:hover {
+    border-color: rgba(220, 38, 38, 0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.valueIcon {
+    font-size: 48px;
+    margin-bottom: 16px;
+    filter: grayscale(0.3);
+}
+
+.valueTitle {
+    font-size: 20px;
+    font-weight: 600;
+    color: #fff;
+    margin: 0 0 12px 0;
+}
+
+.valueText {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* CTA Section */
+.ctaSection {
+    text-align: center;
+    background: rgba(15, 15, 15, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 48px 40px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.ctaTitle {
+    font-size: 36px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #dc2626, #2563eb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0 0 16px 0;
+}
+
+.ctaText {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 18px;
+    line-height: 1.6;
+    margin: 0;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .valuesGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .aboutWrapper {
+        padding: 80px 16px 40px;
+    }
+
+    .aboutContainer {
+        gap: 48px;
+    }
+
+    .mainTitle {
+        font-size: 48px;
+        letter-spacing: 2px;
+    }
+
+    .tagline {
+        font-size: 18px;
+    }
+
+    .missionCard,
+    .trainerCard {
+        padding: 32px 24px;
+    }
+
+    .sectionTitle {
+        font-size: 28px;
+    }
+
+    .missionText,
+    .ctaText {
+        font-size: 16px;
+    }
+
+    .trainerIcon {
+        width: 70px;
+        height: 70px;
+        font-size: 32px;
+    }
+
+    .trainerName {
+        font-size: 24px;
+    }
+
+    .trainerDescription {
+        font-size: 15px;
+    }
+
+    .valuesGrid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .ctaSection {
+        padding: 40px 32px;
+    }
+
+    .ctaTitle {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 480px) {
+    .aboutWrapper {
+        padding: 70px 12px 30px;
+    }
+
+    .aboutContainer {
+        gap: 40px;
+    }
+
+    .mainTitle {
+        font-size: 40px;
+        letter-spacing: 1px;
+    }
+
+    .divider {
+        width: 80px;
+    }
+
+    .tagline {
+        font-size: 16px;
+    }
+
+    .missionCard,
+    .trainerCard {
+        padding: 24px 20px;
+    }
+
+    .sectionTitle {
+        font-size: 24px;
+    }
+
+    .missionText {
+        font-size: 15px;
+    }
+
+    .trainerHeader {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .trainerIcon {
+        width: 64px;
+        height: 64px;
+        font-size: 28px;
+    }
+
+    .trainerName {
+        font-size: 22px;
+    }
+
+    .valueIcon {
+        font-size: 40px;
+    }
+
+    .valueTitle {
+        font-size: 18px;
+    }
+
+    .valueText {
+        font-size: 14px;
+    }
+
+    .ctaSection {
+        padding: 32px 24px;
+    }
+
+    .ctaTitle {
+        font-size: 28px;
+    }
+
+    .ctaText {
+        font-size: 16px;
+    }
 }

@@ -15,18 +15,16 @@ export default function Appointments() {
     try {
       setLoading(true);
       setError(null);
-
       const userData = localStorage.getItem("user");
       if (!userData) {
         Swal.fire({
-                    icon: "error",
-                    title: "Oops...",
-                    text: "You must log in to see your appointments!"
-                  });
+          icon: "error",
+          title: "Oops...",
+          text: "You must log in to see your appointments!"
+        });
         navigate("/home");
         return;
       }
-
       let user;
       try {
         const parsedData = JSON.parse(userData);
@@ -36,22 +34,17 @@ export default function Appointments() {
         navigate("/home");
         return;
       }
-
       if (!user || !user.id) {
         alert("Invalid user information. Please log in again!");
         navigate("/home");
         return;
       }
-
       const response = await axios.get(`http://localhost:3000/users/${user.id}`);
       const userFromApi = response.data; 
-
       setAppointments(userFromApi.appointments || []); 
-
       const storedUser = JSON.parse(userData);
       storedUser.appointments = userFromApi.appointments;
       localStorage.setItem("user", JSON.stringify(storedUser));
-
     } catch (err) {
       console.error("Error fetching appointments:", err);
       setError("Could not fetch appointments!");
@@ -65,72 +58,95 @@ export default function Appointments() {
     fetchAppointments();
   }, [navigate]); 
     
-const handleCancelAppointment = async (appointmentId) => {
-  Swal.fire({
-    title: "Are you sure?",
-    text: "Do you really want to cancel this appointment?",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "rgb(0, 177, 0)",
-    cancelButtonColor: "#d33",    
-    confirmButtonText: "Yes, cancel it!",
-    cancelButtonText: "No, keep it",
-    reverseButtons: true
-  }).then(async (result) => {
-    if (result.isConfirmed) {
-      try {
-        await axios.put(`http://localhost:3000/appointments/cancel/${appointmentId}`);
+  const handleCancelAppointment = async (appointmentId) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "Do you really want to cancel this appointment?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#dc2626",
+      cancelButtonColor: "#2563eb",    
+      confirmButtonText: "Yes, cancel it!",
+      cancelButtonText: "No, keep it",
+      reverseButtons: true
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          await axios.put(`http://localhost:3000/appointments/cancel/${appointmentId}`);
           Swal.fire({
-          title: "Cancelled!",
-          text: "Appointment successfully cancelled!",
-          icon: "success"
-        });
-        fetchAppointments(); 
-      } catch (err) {
-        console.error("Error canceling appointment:", err);
+            title: "Cancelled!",
+            text: "Appointment successfully cancelled!",
+            icon: "success"
+          });
+          fetchAppointments(); 
+        } catch (err) {
+          console.error("Error canceling appointment:", err);
+          Swal.fire({
+            title: "Error",
+            text: "Cannot cancel: allowed only until the day before.",
+            icon: "error"
+          });
+        }
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
         Swal.fire({
-          title: "Error",
-          text: "Cannot cancel: allowed only until the day before.",
-          icon: "error"
+          title: "Cancelled",
+          text: "Your appointment is still active.",
+          icon: "info"
         });
       }
-    } else if (result.dismiss === Swal.DismissReason.cancel) {
-      Swal.fire({
-        title: "Cancelled",
-        text: "Your appointment is still active.",
-        icon: "info"
-      });
-    }
-  });
-};
+    });
+  };
 
   return (
-    <div className={styles.center}>
-      <h1 className={styles.text}>My Appointments</h1>
-      <Link to="/appointments/schedule">
-        <button className={styles.addappointment}> + Add Appointment</button>
-      </Link>
+    <div className={styles.appointmentsWrapper}>
+      <div className={styles.appointmentsContainer}>
+        <div className={styles.header}>
+          <h1 className={styles.title}>My Appointments</h1>
+          <Link to="/appointments/schedule">
+            <button className={styles.addBtn}>+ Add Appointment</button>
+          </Link>
+        </div>
 
-      {loading && <p>Loading appointments...</p>}
-      {error && <p className={styles.errorText}>{error}</p>}
+        {loading && (
+          <div className={styles.loadingState}>
+            <div className={styles.spinner}></div>
+            <p>Loading appointments...</p>
+          </div>
+        )}
 
-      {!loading && !error && appointments.length === 0 && (
-        <p className={styles.booknow}>You don't have any appointments yet. Book one now!</p>
-      )}
+        {error && (
+          <div className={styles.errorState}>
+            <p>{error}</p>
+          </div>
+        )}
 
-      {!loading && !error && appointments.length > 0 && (
-        appointments.map((appointment) => (
-          <AppointmentCard
-            key={appointment.id}
-            id={appointment.id}
-            date={appointment.date}
-            time={appointment.time}
-            status={appointment.status}
-            description={appointment.description}
-            onCancel={handleCancelAppointment} 
-          />
-        ))
-      )}
+        {!loading && !error && appointments.length === 0 && (
+          <div className={styles.emptyState}>
+            <div className={styles.emptyIcon}>📅</div>
+            <h2>No Appointments Yet</h2>
+            <p>You don't have any appointments scheduled. Start your fitness journey by booking one now!</p>
+            <Link to="/appointments/schedule">
+              <button className={styles.bookNowBtn}>Book Your First Session</button>
+            </Link>
+          </div>
+        )}
+
+        {!loading && !error && appointments.length > 0 && (
+          <div className={styles.appointmentsList}>
+            {appointments.map((appointment) => (
+              <AppointmentCard
+                key={appointment.id}
+                id={appointment.id}
+                date={appointment.date}
+                time={appointment.time}
+                status={appointment.status}
+                description={appointment.description}
+                onCancel={handleCancelAppointment} 
+              />
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

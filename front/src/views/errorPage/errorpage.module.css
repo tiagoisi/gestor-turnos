@@ -1,4 +1,165 @@
-.container {
-    color: #fff;
+/* Wrapper principal - Mismo estilo que home */
+.errorWrapper {
+    min-height: calc(100vh - 75px);
+    overflow: hidden;
+    background: #0a0a0a;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Efectos de fondo - Igual que home */
+.errorWrapper::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 20%, rgba(220, 38, 38, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(37, 99, 235, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Grid sutil de fondo - Igual que home */
+.errorWrapper::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Contenido principal */
+.errorContent {
+    position: relative;
+    z-index: 1;
     text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+/* Código de error */
+.errorCode {
+    font-size: clamp(120px, 25vw, 200px);
+    font-weight: 800;
+    letter-spacing: 8px;
+    margin: 0;
+    background: linear-gradient(135deg, #dc2626 0%, #2563eb 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-transform: uppercase;
+    line-height: 1;
+    animation: pulse 2s infinite;
+}
+
+/* Título del error */
+.errorTitle {
+    font-size: clamp(28px, 5vw, 42px);
+    font-weight: 700;
+    color: #fff;
+    margin: 20px 0 16px 0;
+    letter-spacing: -0.5px;
+}
+
+/* Mensaje del error */
+.errorMessage {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: clamp(16px, 3vw, 20px);
+    line-height: 1.6;
+    margin: 0 0 32px 0;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Contador */
+.countdown {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 18px;
+    margin: 0 0 40px 0;
+    font-style: italic;
+}
+
+.countdownNumber {
+    color: #dc2626;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+/* Divisor decorativo */
+.divider {
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #dc2626, #2563eb, transparent);
+    margin: 40px auto;
+    border-radius: 2px;
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .errorContent {
+        padding: 20px 16px;
+    }
+    
+    .errorCode {
+        letter-spacing: 4px;
+    }
+    
+    .divider {
+        width: 80px;
+        margin: 30px auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .errorContent {
+        padding: 16px 12px;
+    }
+    
+    .errorCode {
+        letter-spacing: 2px;
+    }
+    
+    .divider {
+        width: 60px;
+        height: 2px;
+        margin: 24px auto;
+    }
 }

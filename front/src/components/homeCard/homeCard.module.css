@@ -1,43 +1,182 @@
+/* Container de las cards */
 .container {
     display: flex;
     justify-content: center;
-    margin-top: 50px;
-    gap: 60px;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: 32px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
+/* Card individual */
 .card {
-    color: white;
-    height: 530px;
-    width: 300px;
-    background-color: rgb(180, 0, 0);
-    border-radius: 15px;
-    padding: 10px;
+    position: relative;
+    width: 100%;
+    max-width: 380px;
+    background: rgba(15, 15, 15, 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    box-shadow: 
+        0 10px 40px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(220, 38, 38, 0.5);
+    box-shadow: 
+        0 20px 60px rgba(220, 38, 38, 0.3),
+        0 0 0 1px rgba(220, 38, 38, 0.3);
+}
+
+/* Wrapper de la imagen */
+.card :global(.cardImageWrapper) {
+    position: relative;
+    width: 100%;
+    height: 280px;
+    overflow: hidden;
+}
+
+.card :global(.cardImageWrapper) img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover :global(.cardImageWrapper) img {
+    transform: scale(1.08);
+}
+
+/* Overlay con gradiente */
+.card :global(.cardOverlay) {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60%;
+    background: linear-gradient(
+        to top,
+        rgba(15, 15, 15, 0.95) 0%,
+        rgba(15, 15, 15, 0.6) 50%,
+        transparent 100%
+    );
+    pointer-events: none;
+}
+
+/* Contenido de la card */
+.card :global(.cardContent) {
+    padding: 24px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    transition: transform 0.2s ease;
-    border: 1px solid rgb(71, 71, 71);
-    &:hover {
-        transform: scale(1.05);
-        background-color: rgb(218, 0, 0);
+    gap: 8px;
+}
+
+/* Título de la card */
+.card h2 {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.4;
+    margin: 0;
+    letter-spacing: 0.3px;
+    transition: color 0.3s ease;
+}
+
+.card:hover h2 {
+    background: linear-gradient(135deg, #dc2626, #2563eb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Descripción/autor */
+.card h3 {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 13px;
+    font-weight: 400;
+    margin: 0;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+/* Indicador visual sutil */
+.card::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #dc2626, #2563eb);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover::after {
+    transform: scaleX(1);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .container {
+        gap: 28px;
+    }
+
+    .card {
+        max-width: 360px;
     }
 }
 
-.card h2 {
-    text-align: center;
-    margin: 2px 0 14px 0;
-    font-weight: 400;
-    font-size: 20px;
+@media (max-width: 768px) {
+    .container {
+        gap: 24px;
+        padding: 0 16px;
+    }
+
+    .card {
+        max-width: 100%;
+    }
+
+    .card :global(.cardImageWrapper) {
+        height: 240px;
+    }
+
+    .card :global(.cardContent) {
+        padding: 20px;
+    }
+
+    .card h2 {
+        font-size: 18px;
+    }
 }
 
-.card h3 {
-    margin: 8px;
-    font-weight: 300;
-    font-size: 12px;
-}
+@media (max-width: 480px) {
+    .container {
+        gap: 20px;
+        padding: 0 12px;
+    }
 
-.card img {
-    width: 300px;
-    border-radius: 10px;
-}
+    .card :global(.cardImageWrapper) {
+        height: 200px;
+    }
 
+    .card :global(.cardContent) {
+        padding: 18px;
+    }
+
+    .card h2 {
+        font-size: 17px;
+    }
+
+    .card h3 {
+        font-size: 12px;
+    }
+}

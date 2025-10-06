@@ -1,43 +1,291 @@
-form {
+/* Wrapper principal - NO afecta body global */
+.appointmentWrapper {
+    min-height: calc(100vh - 73px);
     display: flex;
-    flex-direction: column;
-    gap: 20px;
+    justify-content: center;
     align-items: center;
+    background: #0a0a0a;
+    position: relative;
+    overflow: hidden;
 }
 
-form input {
-    width: 450px;
-    border-radius: 5px;
-    height: 20px;
-    padding: 5px;
+/* Efectos de fondo */
+.appointmentWrapper::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(220, 38, 38, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(37, 99, 235, 0.15) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
 }
 
-.error {
-    color: red;
-    font-size: 13px;
+/* Grid sutil de fondo */
+.appointmentWrapper::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+    z-index: 0;
 }
 
-label {
+/* Contenedor del formulario */
+.appointmentContainer {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 300px;
+    background: rgba(15, 15, 15, 0.8);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    padding: 40px 50px;
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.title {
+    font-size: 32px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0 0 8px 0;
+    letter-spacing: -0.5px;
+}
+
+.subtitle {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 15px;
+    margin: 0;
+    font-weight: 400;
+}
+
+/* Formulario */
+.form {
     display: flex;
     flex-direction: column;
-    color: #fff;
-    padding: 2px;
+    gap: 24px;
 }
 
-form button {
-    background-color: rgb(0, 177, 0);
+/* Grupo de input */
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Labels */
+.label {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    margin-left: 4px;
+}
+
+/* Inputs */
+.input {
+    padding: 14px 18px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 400;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    outline: none;
+}
+
+.input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.input:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.input:focus {
+    border-color: #2563eb;
+    background: rgba(37, 99, 235, 0.1);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+    transform: translateY(-1px);
+}
+
+/* Input con error */
+.inputError {
+    padding: 14px 18px;
+    background: rgba(220, 38, 38, 0.05);
+    border: 2px solid #dc2626;
+    border-radius: 12px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 400;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    outline: none;
+}
+
+.inputError::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.inputError:focus {
+    border-color: #dc2626;
+    background: rgba(220, 38, 38, 0.1);
+    box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.1);
+}
+
+/* Mensajes de error */
+.error {
+    color: #ef4444;
+    font-size: 13px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: 4px;
+    animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.error::before {
+    content: "⚠";
+    font-size: 14px;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Botón de submit */
+.submitBtn {
+    width: 100%;
+    padding: 12px 20px;
+    margin-top: 15px;
+    background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
     color: #fff;
     border: none;
-    font-size: 14px;
-    border-radius: 8px;
-    margin-top: 15px;
-    padding: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 
+        0 4px 20px rgba(37, 99, 235, 0.4),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
+    letter-spacing: 0.5px;
 }
 
-form button:hover {
-    background-color:  rgb(0, 150, 0);
-    color: #cecece;
+.submitBtn:hover {
+    background: linear-gradient(135deg, #1d4ed8 0%, #1e3a8a 100%);
+    transform: translateY(-2px);
+    box-shadow: 
+        0 8px 30px rgba(37, 99, 235, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.15);
+}
+
+.submitBtn:active {
+    transform: translateY(0);
+    box-shadow: 
+        0 2px 10px rgba(37, 99, 235, 0.4),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.submitBtn:disabled {
+    background: rgba(255, 255, 255, 0.1);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+    opacity: 0.5;
+}
+
+/* Input type date y time - estilos especiales */
+.input[type="date"],
+.input[type="time"],
+.inputError[type="date"],
+.inputError[type="time"] {
+    color-scheme: dark;
+}
+
+.input[type="date"]::-webkit-calendar-picker-indicator,
+.input[type="time"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    opacity: 0.6;
     cursor: pointer;
+}
+
+.input[type="date"]::-webkit-calendar-picker-indicator:hover,
+.input[type="time"]::-webkit-calendar-picker-indicator:hover {
+    opacity: 1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .appointmentWrapper {
+        padding: 20px 16px;
+    }
+
+    .appointmentContainer {
+        padding: 36px 28px;
+    }
+
+    .title {
+        font-size: 28px;
+    }
+
+    .subtitle {
+        font-size: 14px;
+    }
+
+    .form {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .appointmentContainer {
+        padding: 32px 24px;
+        border-radius: 20px;
+    }
+
+    .title {
+        font-size: 26px;
+    }
+
+    .input,
+    .inputError {
+        font-size: 16px; /* Evita zoom en iOS */
+        padding: 13px 16px;
+    }
+
+    .submitBtn {
+        padding: 15px 20px;
+        font-size: 15px;
+    }
 }

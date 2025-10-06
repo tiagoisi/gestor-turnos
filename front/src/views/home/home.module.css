@@ -1,17 +1,493 @@
-.title {
-    color: #fff;
-    text-align: center;
-    font-size: 80px;
-    margin-bottom: 0;
-    margin-top: 30px;
-    font-weight: 300;
+/* Wrapper principal - NO afecta body global */
+.homeWrapper {
+    min-height: 100vh;
+    background: #0a0a0a;
+    position: relative;
+    overflow-x: hidden;
 }
 
-.subtitle {
-    color: #fff;
-    font-size: 18px;
+/* Efectos de fondo */
+.homeWrapper::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 20%, rgba(220, 38, 38, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(37, 99, 235, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Grid sutil de fondo */
+.homeWrapper::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Sección Hero */
+.heroSection {
+    position: relative;
+    z-index: 1;
+    padding: 100px 20px 80px;
     text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Título principal */
+.title {
+    font-size: clamp(48px, 12vw, 96px);
+    font-weight: 800;
+    letter-spacing: 4px;
+    margin: 0 0 16px 0;
+    background: linear-gradient(135deg, #dc2626 0%, #2563eb 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-transform: uppercase;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+/* Subtítulo */
+.subtitle {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: clamp(16px, 3vw, 22px);
     font-weight: 300;
-    margin-top: 0;
     font-style: italic;
+    margin: 0;
+    letter-spacing: 1px;
+    animation: fadeInUp 0.8s ease-out 0.2s backwards;
+}
+
+/* Divisor decorativo */
+.divider {
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #dc2626, #2563eb, transparent);
+    margin: 40px auto;
+    border-radius: 2px;
+    animation: fadeInUp 0.8s ease-out 0.4s backwards;
+}
+
+/* Descripción del hero */
+.heroDescription {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 18px;
+    line-height: 1.7;
+    margin: 0 0 40px 0;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    animation: fadeInUp 0.8s ease-out 0.6s backwards;
+}
+
+/* Botones CTA del hero */
+.ctaButtons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fadeInUp 0.8s ease-out 0.8s backwards;
+}
+
+.primaryBtn {
+    padding: 16px 36px;
+    background: linear-gradient(135deg, #dc2626, #991b1b);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 20px rgba(220, 38, 38, 0.4);
+}
+
+.primaryBtn:hover {
+    background: linear-gradient(135deg, #b91c1c, #7f1d1d);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(220, 38, 38, 0.5);
+}
+
+.secondaryBtn {
+    padding: 16px 36px;
+    background: rgba(37, 99, 235, 0.1);
+    border: 2px solid rgba(37, 99, 235, 0.4);
+    color: #60a5fa;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    letter-spacing: 0.5px;
+}
+
+.secondaryBtn:hover {
+    background: rgba(37, 99, 235, 0.2);
+    border-color: #2563eb;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+}
+
+/* Sección de servicios */
+.servicesSection {
+    position: relative;
+    z-index: 1;
+    padding: 60px 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Sección Why Choose Us */
+.whySection {
+    position: relative;
+    z-index: 1;
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.sectionTitle {
+    font-size: 42px;
+    font-weight: 700;
+    text-align: center;
+    background: linear-gradient(135deg, #dc2626, #2563eb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0 0 48px 0;
+    letter-spacing: -0.5px;
+}
+
+/* Grid de características */
+.featuresGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.featureCard {
+    background: rgba(15, 15, 15, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 32px 24px;
+    text-align: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.featureCard:hover {
+    border-color: rgba(220, 38, 38, 0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.featureIcon {
+    font-size: 48px;
+    margin-bottom: 16px;
+}
+
+.featureTitle {
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    margin: 0 0 12px 0;
+}
+
+.featureText {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Sección de estadísticas */
+.statsSection {
+    position: relative;
+    z-index: 1;
+    padding: 60px 20px;
+    background: rgba(15, 15, 15, 0.4);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.statsGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.statCard {
+    text-align: center;
+}
+
+.statNumber {
+    font-size: 48px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #dc2626, #2563eb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+    letter-spacing: -1px;
+}
+
+.statLabel {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* CTA final */
+.finalCta {
+    position: relative;
+    z-index: 1;
+    padding: 80px 20px;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.ctaTitle {
+    font-size: 42px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #dc2626, #2563eb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0 0 20px 0;
+}
+
+.ctaText {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 18px;
+    line-height: 1.7;
+    margin: 0 0 40px 0;
+}
+
+.ctaButton {
+    padding: 18px 40px;
+    background: linear-gradient(135deg, #dc2626, #991b1b);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 17px;
+    font-weight: 600;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    letter-spacing: 0.5px;
+    box-shadow: 0 6px 25px rgba(220, 38, 38, 0.4);
+}
+
+.ctaButton:hover {
+    background: linear-gradient(135deg, #b91c1c, #7f1d1d);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 35px rgba(220, 38, 38, 0.5);
+}
+
+.ctaButton:active {
+    transform: translateY(-1px);
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .featuresGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .statsGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
+    }
+}
+
+@media (max-width: 768px) {
+    .heroSection {
+        padding: 80px 20px 60px;
+    }
+
+    .title {
+        letter-spacing: 2px;
+    }
+
+    .subtitle {
+        letter-spacing: 0.5px;
+    }
+
+    .divider {
+        width: 80px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    .heroDescription {
+        font-size: 16px;
+        margin-bottom: 32px;
+    }
+
+    .ctaButtons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .primaryBtn,
+    .secondaryBtn {
+        width: 100%;
+    }
+
+    .servicesSection,
+    .whySection {
+        padding: 48px 16px;
+    }
+
+    .sectionTitle {
+        font-size: 32px;
+        margin-bottom: 36px;
+    }
+
+    .featuresGrid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .statsSection {
+        padding: 48px 16px;
+    }
+
+    .statsGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 28px;
+    }
+
+    .statNumber {
+        font-size: 40px;
+    }
+
+    .finalCta {
+        padding: 60px 16px;
+    }
+
+    .ctaTitle {
+        font-size: 32px;
+    }
+
+    .ctaText {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .heroSection {
+        padding: 60px 16px 40px;
+    }
+
+    .title {
+        letter-spacing: 1px;
+    }
+
+    .divider {
+        width: 60px;
+        height: 2px;
+        margin-top: 24px;
+        margin-bottom: 24px;
+    }
+
+    .heroDescription {
+        font-size: 15px;
+        margin-bottom: 28px;
+    }
+
+    .primaryBtn,
+    .secondaryBtn {
+        padding: 14px 28px;
+        font-size: 15px;
+    }
+
+    .servicesSection,
+    .whySection {
+        padding: 40px 12px;
+    }
+
+    .sectionTitle {
+        font-size: 28px;
+        margin-bottom: 32px;
+    }
+
+    .featureIcon {
+        font-size: 40px;
+    }
+
+    .featureTitle {
+        font-size: 17px;
+    }
+
+    .featureText {
+        font-size: 13px;
+    }
+
+    .statsSection {
+        padding: 40px 12px;
+    }
+
+    .statsGrid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .statNumber {
+        font-size: 36px;
+    }
+
+    .statLabel {
+        font-size: 13px;
+    }
+
+    .finalCta {
+        padding: 50px 12px;
+    }
+
+    .ctaTitle {
+        font-size: 28px;
+    }
+
+    .ctaText {
+        font-size: 15px;
+        margin-bottom: 32px;
+    }
+
+    .ctaButton {
+        padding: 16px 32px;
+        font-size: 16px;
+    }
 }
