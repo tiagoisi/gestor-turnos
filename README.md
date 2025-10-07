@@ -1,7 +1,7 @@
 # STEELCORE 🧬
 
 <div align="center">
-  <img src="./docs/steelcore-home.png" alt="Página de inicio de SteelCore" width="800"/>
+  <img src="https://github.com/user-attachments/assets/4e925a73-55f4-4d88-b144-cd4df77d847f" alt="Página de inicio de SteelCore" width="800"/>
   
   **Discipline creates strength.** Transforma tu cuerpo y mente con programas de entrenamiento personalizados.
 </div>
