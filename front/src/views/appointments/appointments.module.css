@@ -1,10 +1,10 @@
 /* Wrapper principal */
 .appointmentsWrapper {
-    min-height: 100vh;
+    min-height: calc(100vh - 143px);
     background: #0a0a0a;
     position: relative;
     overflow-x: hidden;
-    padding: 100px 20px 60px;
+    padding: 70px 0px 0px;
 }
 
 /* Efectos de fondo */
@@ -16,8 +16,8 @@
     right: 0;
     bottom: 0;
     background: 
-        radial-gradient(circle at 20% 20%, rgba(220, 38, 38, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(37, 99, 235, 0.1) 0%, transparent 50%);
+        radial-gradient(circle at 20% 20%, rgba(153, 27, 27, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(212, 175, 55, 0.08) 0%, transparent 50%);
     pointer-events: none;
     z-index: 0;
 }
@@ -31,8 +31,8 @@
     right: 0;
     bottom: 0;
     background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+        linear-gradient(rgba(212, 175, 55, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(212, 175, 55, 0.02) 1px, transparent 1px);
     background-size: 50px 50px;
     pointer-events: none;
     z-index: 0;
@@ -59,33 +59,55 @@
 .title {
     font-size: 42px;
     font-weight: 700;
-    background: linear-gradient(135deg, #dc2626, #2563eb);
+    background-color: #d4af37;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     margin: 0;
-    letter-spacing: -0.5px;
+    letter-spacing: 2px;
+    position: relative;
 }
 
 /* Botón Add Appointment */
 .addBtn {
     padding: 12px 28px;
-    background: linear-gradient(135deg, #dc2626, #991b1b);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #fff;
+    background: linear-gradient(135deg, #d4af37 0%, #aa8a3e 100%);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    color: #0a0a0a;
     font-size: 15px;
-    font-weight: 600;
-    border-radius: 10px;
+    font-weight: 700;
+    border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    letter-spacing: 0.5px;
-    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+    letter-spacing: 1px;
+    box-shadow: 
+        0 4px 15px rgba(212, 175, 55, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.addBtn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.addBtn:hover::before {
+    left: 100%;
 }
 
 .addBtn:hover {
-    background: linear-gradient(135deg, #b91c1c, #7f1d1d);
+    background: linear-gradient(135deg, #e5c158 0%, #d4af37 100%);
     transform: translateY(-2px);
-    box-shadow: 0 6px 25px rgba(220, 38, 38, 0.4);
+    box-shadow: 
+        0 6px 25px rgba(212, 175, 55, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .addBtn:active {
@@ -113,11 +135,12 @@
 .spinner {
     width: 48px;
     height: 48px;
-    border: 4px solid rgba(255, 255, 255, 0.1);
-    border-top-color: #dc2626;
+    border: 4px solid rgba(212, 175, 55, 0.1);
+    border-top-color: #d4af37;
     border-radius: 50%;
     animation: spin 0.8s linear infinite;
     margin-bottom: 20px;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
 }
 
 @keyframes spin {
@@ -130,36 +153,40 @@
 .errorState {
     text-align: center;
     padding: 60px 20px;
-    background: rgba(220, 38, 38, 0.1);
-    border: 1px solid rgba(220, 38, 38, 0.3);
+    background: rgba(153, 27, 27, 0.15);
+    border: 1px solid rgba(153, 27, 27, 0.3);
     border-radius: 16px;
     color: #ef4444;
     font-size: 16px;
+    backdrop-filter: blur(10px);
 }
 
 /* Estado vacío */
 .emptyState {
     text-align: center;
     padding: 80px 20px;
-    background: rgba(15, 15, 15, 0.6);
+    background: rgba(20, 20, 20, 0.8);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(212, 175, 55, 0.15);
     border-radius: 20px;
     max-width: 600px;
     margin: 0 auto;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
 }
 
 .emptyIcon {
     font-size: 64px;
     margin-bottom: 24px;
     opacity: 0.6;
+    filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.3));
 }
 
 .emptyState h2 {
-    color: #fff;
+    color: #d4af37;
     font-size: 28px;
     font-weight: 600;
     margin: 0 0 16px 0;
+    letter-spacing: 0.5px;
 }
 
 .emptyState p {
@@ -175,22 +202,43 @@
 /* Botón Book Now */
 .bookNowBtn {
     padding: 14px 32px;
-    background: linear-gradient(135deg, #dc2626, #991b1b);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #fff;
+    background: linear-gradient(135deg, #d4af37 0%, #aa8a3e 100%);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    color: #0a0a0a;
     font-size: 16px;
-    font-weight: 600;
-    border-radius: 12px;
+    font-weight: 700;
+    border-radius: 10px;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    letter-spacing: 0.5px;
-    box-shadow: 0 4px 20px rgba(220, 38, 38, 0.4);
+    letter-spacing: 1px;
+    box-shadow: 
+        0 4px 20px rgba(212, 175, 55, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.bookNowBtn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.bookNowBtn:hover::before {
+    left: 100%;
 }
 
 .bookNowBtn:hover {
-    background: linear-gradient(135deg, #b91c1c, #7f1d1d);
+    background: linear-gradient(135deg, #e5c158 0%, #d4af37 100%);
     transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(220, 38, 38, 0.5);
+    box-shadow: 
+        0 8px 30px rgba(212, 175, 55, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .bookNowBtn:active {
@@ -211,6 +259,7 @@
 
     .title {
         font-size: 32px;
+        letter-spacing: 1px;
     }
 
     .addBtn {
@@ -235,7 +284,6 @@
         font-size: 15px;
     }
 }
-
 @media (max-width: 480px) {
     .appointmentsWrapper {
         padding: 70px 12px 30px;
@@ -267,7 +315,7 @@
         font-size: 14px;
         margin-bottom: 24px;
     }
-
+    
     .bookNowBtn {
         padding: 12px 28px;
         font-size: 15px;

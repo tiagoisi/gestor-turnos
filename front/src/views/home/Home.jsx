@@ -48,15 +48,15 @@ const Home = () => {
                     />
                     <HomeCard
                         className={homeCardStyles.card}
-                        title="Muscle Building & Hypertrophy"
+                        title="Muscle Building, Strength & Hypertrophy"
                         img={gym2}
-                        description="by Tiago Isidro"
+                        description="STEELCORE METHOD"
                     />
                     <HomeCard
                         className={homeCardStyles.card}
                         title="Focused on Discipline and Sustainable Results"
                         img={gym3}
-                        description="by Tiago Isidro"
+                        description="TRAINER’S PICK"
                     />
                 </div>
             </div>

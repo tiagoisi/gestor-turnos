@@ -3,7 +3,7 @@ import AppointmentCard from "../../components/appoinmentCard/appointmentCard";
 import styles from "./appointments.module.css";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 
 export default function Appointments() {
   const [appointments, setAppointments] = useState([]);

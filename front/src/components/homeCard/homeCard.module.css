@@ -9,32 +9,44 @@
     margin: 0 auto;
     padding: 0 20px;
 }
-
 /* Card individual */
 .card {
     position: relative;
     width: 100%;
     max-width: 380px;
-    background: rgba(15, 15, 15, 0.6);
+    background: rgba(20, 20, 20, 0.8);
     backdrop-filter: blur(10px);
     border-radius: 20px;
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(212, 175, 55, 0.15);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
     box-shadow: 
-        0 10px 40px rgba(0, 0, 0, 0.3),
-        0 0 0 1px rgba(255, 255, 255, 0.05);
+        0 10px 40px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(212, 175, 55, 0.05);
 }
-
+.card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 2;
+}
+.card:hover::before {
+    opacity: 1;
+}
 .card:hover {
     transform: translateY(-8px);
-    border-color: rgba(220, 38, 38, 0.5);
+    border-color: rgba(212, 175, 55, 0.4);
     box-shadow: 
-        0 20px 60px rgba(220, 38, 38, 0.3),
-        0 0 0 1px rgba(220, 38, 38, 0.3);
+        0 20px 60px rgba(212, 175, 55, 0.2),
+        0 0 0 1px rgba(212, 175, 55, 0.3);
 }
-
 /* Wrapper de la imagen */
 .card :global(.cardImageWrapper) {
     position: relative;
@@ -42,18 +54,15 @@
     height: 280px;
     overflow: hidden;
 }
-
 .card :global(.cardImageWrapper) img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
-
 .card:hover :global(.cardImageWrapper) img {
     transform: scale(1.08);
 }
-
 /* Overlay con gradiente */
 .card :global(.cardOverlay) {
     position: absolute;
@@ -69,7 +78,6 @@
     );
     pointer-events: none;
 }
-
 /* Contenido de la card */
 .card :global(.cardContent) {
     padding: 24px;
@@ -77,7 +85,6 @@
     flex-direction: column;
     gap: 8px;
 }
-
 /* Título de la card */
 .card h2 {
     color: #fff;
@@ -86,26 +93,23 @@
     line-height: 1.4;
     margin: 0;
     letter-spacing: 0.3px;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
 }
-
 .card:hover h2 {
-    background: linear-gradient(135deg, #dc2626, #2563eb);
+    background: linear-gradient(135deg, #d4af37 0%, #aa8a3e 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
-
 /* Descripción/autor */
 .card h3 {
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(212, 175, 55, 0.6);
     font-size: 13px;
-    font-weight: 400;
+    font-weight: 500;
     margin: 0;
     letter-spacing: 0.5px;
     text-transform: uppercase;
 }
-
 /* Indicador visual sutil */
 .card::after {
     content: "";
@@ -114,68 +118,56 @@
     left: 0;
     right: 0;
     height: 3px;
-    background: linear-gradient(90deg, #dc2626, #2563eb);
+    background: linear-gradient(90deg, #d4af37, #aa8a3e);
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
 }
-
 .card:hover::after {
     transform: scaleX(1);
 }
-
 /* Responsive */
 @media (max-width: 1200px) {
     .container {
         gap: 28px;
     }
-
     .card {
         max-width: 360px;
     }
 }
-
 @media (max-width: 768px) {
     .container {
         gap: 24px;
         padding: 0 16px;
     }
-
     .card {
         max-width: 100%;
     }
-
     .card :global(.cardImageWrapper) {
         height: 240px;
     }
-
     .card :global(.cardContent) {
         padding: 20px;
     }
-
     .card h2 {
         font-size: 18px;
     }
 }
-
 @media (max-width: 480px) {
     .container {
         gap: 20px;
         padding: 0 12px;
     }
-
     .card :global(.cardImageWrapper) {
         height: 200px;
     }
-
     .card :global(.cardContent) {
         padding: 18px;
     }
-
     .card h2 {
         font-size: 17px;
     }
-
     .card h3 {
         font-size: 12px;
     }
