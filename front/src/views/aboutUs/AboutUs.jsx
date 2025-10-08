@@ -31,7 +31,7 @@ const AboutUs = () => {
               <div className={styles.trainerIcon}>👤</div>
               <div className={styles.trainerInfo}>
                 <h3 className={styles.trainerName}>Tiago Isidro</h3>
-                <p className={styles.trainerRole}>Lead Personal Trainer & Founder</p>
+                <p className={styles.trainerRole}>Founder And CEO</p>
               </div>
             </div>
             <p className={styles.trainerDescription}>

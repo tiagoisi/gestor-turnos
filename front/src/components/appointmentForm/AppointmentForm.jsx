@@ -10,8 +10,8 @@ const AppointmentForm = () => {
         <div className={styles.appointmentWrapper}>
             <div className={styles.appointmentContainer}>
                 <div className={styles.header}>
-                    <h1 className={styles.title}>Book Your Session</h1>
-                    <p className={styles.subtitle}>Schedule your training appointment</p>
+                    <h1 className={styles.title}>Book Session</h1>
+                    <p className={styles.subtitle}>Schedule your appointment</p>
                 </div>
 
                 <Formik
