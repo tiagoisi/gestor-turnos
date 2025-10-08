@@ -16,4 +16,3 @@ userRouter.post("/register", validateUser, register);
 userRouter.post("/login", validateCredential, login);
 
 export default userRouter;
-//? *POR EL MOMENTO* LOS CONTROLADORES DE ESTAS RUTAS SOLO VAN A MANDAR UN MENSAJE 
