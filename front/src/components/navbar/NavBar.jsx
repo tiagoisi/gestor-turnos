@@ -1,4 +1,4 @@
-import styles from "./Navbar.module.css"
+import styles from "./NavBar.module.css"
 import logo from "../../assets/logo.png"
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
