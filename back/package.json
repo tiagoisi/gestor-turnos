@@ -17,6 +17,7 @@
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
     "@types/morgan": "^1.9.10",
+    "@types/node": "^24.9.1",
     "morgan": "^1.10.0",
     "nodemon": "^3.1.10"
   },
@@ -26,9 +27,8 @@
     "express": "^5.1.0",
     "pg": "^8.16.3",
     "reflect-metadata": "^0.2.2",
-    "typeorm": "^0.3.25",
     "ts-node": "^10.9.2",
-    "typescript": "^5.8.3",
-    "@types/node": "^24.0.12"
+    "typeorm": "^0.3.25",
+    "typescript": "^5.8.3"
   }
 }
