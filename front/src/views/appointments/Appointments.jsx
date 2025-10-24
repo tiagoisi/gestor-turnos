@@ -39,7 +39,7 @@ export default function Appointments() {
         navigate("/home");
         return;
       }
-      const response = await axios.get(`http://localhost:3000/users/${user.id}`);
+      const response = await axios.get(`https://gestor-turnos-dbyt.onrender.com/users/${user.id}`);
       const userFromApi = response.data; 
       setAppointments(userFromApi.appointments || []); 
       const storedUser = JSON.parse(userData);
@@ -72,7 +72,7 @@ export default function Appointments() {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          await axios.put(`http://localhost:3000/appointments/cancel/${appointmentId}`);
+          await axios.put(`https://gestor-turnos-dbyt.onrender.com/cancel/${appointmentId}`);
           Swal.fire({
             title: "Cancelled!",
             text: "Appointment successfully cancelled!",

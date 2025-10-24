@@ -95,7 +95,7 @@ const Register = () => {
                     }}
                     onSubmit={async (values, { resetForm }) => {
                         try {
-                            const { data } = await axios.post("http://localhost:3000/users/register", values);
+                            const { data } = await axios.post("https://gestor-turnos-dbyt.onrender.com/users/register", values);
                             Swal.fire({
                                         title: "Welcome!",
                                         text: "You have successfully registered.",

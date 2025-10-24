@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import Swal from 'sweetalert2';
 import { FaArrowRightToBracket } from "react-icons/fa6";
 import { FaSignOutAlt } from "react-icons/fa";
-import { FaUser } from "react-icons/fa";
 
 const NavBar = () => {
   const [user, setUser] = useState(null);

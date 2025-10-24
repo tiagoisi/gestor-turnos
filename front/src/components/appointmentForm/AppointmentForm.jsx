@@ -77,7 +77,7 @@ const AppointmentForm = () => {
                                 return;
                             }
                             const appointmentData = { ...values, userId: user.id };
-                            await axios.post("http://localhost:3000/appointments/shedule", appointmentData);
+                            await axios.post("https://gestor-turnos-dbyt.onrender.com/appointments/shedule", appointmentData);
                             Swal.fire({
                                         title: "Congrats!",
                                         text: "Appointment successfully booked!",
