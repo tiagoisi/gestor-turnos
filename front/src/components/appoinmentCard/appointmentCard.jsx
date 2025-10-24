@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "./AppointmentCard.module.css";
+import styles from "./appointmentCard.module.css";
 
 export default function AppointmentCard({
     id, date, time, status, description, onCancel 
