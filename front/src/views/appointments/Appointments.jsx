@@ -72,7 +72,7 @@ export default function Appointments() {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          await axios.put(`https://gestor-turnos-dbyt.onrender.com/cancel/${appointmentId}`);
+          await axios.put(`https://gestor-turnos-dbyt.onrender.com/appointments/cancel/${appointmentId}`);
           Swal.fire({
             title: "Cancelled!",
             text: "Appointment successfully cancelled!",
